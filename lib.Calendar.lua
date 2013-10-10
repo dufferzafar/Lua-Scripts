@@ -1,12 +1,13 @@
 --[[
-Script Name:		Calendar
-Script Features:	Time, Day, Date Functions
-Script Author:		Psych0 C0d3r
-Script Version:		0.3a
+The libLua Project - A collection of pure lua functions.
+
+libLua.Type 
+	Basic type wrappers and base conversion fucntions.
 
 --]]
 
-Calendar = {};
+libLua = {}
+libLua.Calendar = {};
 
 local floor = math.floor
 local mod = math.mod
@@ -47,14 +48,14 @@ end
 --						Day & Date
 --######################################################
 
-function Calendar.FormatDate(D,M,Y,Del)
+function libLua.Calendar.FormatDate(D,M,Y,Del)
 	if type(Del) == "nil" then
 		Del = "/";
 	end
 	return string.format("%02d"..Del.."%02d"..Del.."%04d", D, M, Y);
 end
 
-function Calendar.UnFormatDate(Date,Del)
+function libLua.Calendar.UnFormatDate(Date,Del)
 	if type(Del) == "nil" then
 		return
 	end
@@ -62,9 +63,9 @@ function Calendar.UnFormatDate(Date,Del)
   	return D, M, Y;
 end
 
-function Calendar.SubtractDate(Date1, Date2, Del, Type)
-	local d1, m1, y1 = Calendar.UnFormatDate(Date1, Del)
-	local d2, m2, y2 = Calendar.UnFormatDate(Date2, Del)
+function libLua.Calendar.SubtractDate(Date1, Date2, Del, Type)
+	local d1, m1, y1 = libLua.Calendar.UnFormatDate(Date1, Del)
+	local d2, m2, y2 = libLua.Calendar.UnFormatDate(Date2, Del)
 	local days = makedaynum(d1, m1, y1) - makedaynum(d2, m2, y2)
 	
 	if Type == "D" then

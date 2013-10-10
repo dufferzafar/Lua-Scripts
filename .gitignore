@@ -1,4 +1,11 @@
 #################
+## Sublime Text
+#################
+*.SUBLIME-PROJECT
+*.SUBLIME-WORKSPACE
+Help/
+
+#################
 ## Eclipse
 #################
 

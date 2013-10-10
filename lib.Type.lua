@@ -1,55 +1,61 @@
 --[[
-Script Name:		Type
-Script Features:	Type Verifications & Conversions
-Script Author:		Psych0 C0d3r
-Script Version:		1.0a
+The libLua Project - A collection of pure lua functions.
+
+libLua.Type 
+	Basic type wrappers and base conversion fucntions.
+
 --]]
 
-Type = {};
+libLua = {}
+libLua.Type = {}
 
 --######################################################
 --					Type Conversions
 --######################################################
 
-function Type.ToString(Value) return tostring(Value) end
+function libLua.Type.ToString(Value) return tostring(Value) end
 
-function Type.ToNumber(Value) return tonumber(Value) end
+function libLua.Type.ToNumber(Value) return tonumber(Value) end
 
 --######################################################
 --					Type Verifications
 --######################################################
 
-function Type.IsNumber(Value)
+function libLua.Type.IsNumber(Value)
 	if (type(Value) == "number") then return true
 	else return false end
 end
 
-function Type.IsBoolean(Value)
+function libLua.Type.IsBoolean(Value)
 	if (type(Value) == "boolean") then return true
 	else return false end
 end
 
-function Type.IsString(Value)
+function libLua.Type.IsString(Value)
 	if (type(Value) == "string") then return true
 	else return false end
 end
 
-function Type.IsTable(Value)
+function libLua.Type.IsTable(Value)
 	if (type(Value) == "table") then return true
 	else return false end
 end
 
-function Type.IsFunction(Value)
+function libLua.Type.IsFunction(Value)
 	if (type(Value) == "function") then	return true
 	else return false end
 end
 
-function Type.DoesExist(Value)
+function libLua.Type.DoesExist(Value)
 	if (type(Value) == "nil") then return false
 	else return true end
 end
 
-function Type.DecToBin(DecNum)		--Convert a decimal number to Binary
+--######################################################
+--				Numeric Base Conversions
+--######################################################
+
+function libLua.Type.DecToBin(DecNum)		--Convert a decimal number to Binary
 	local Quot = DecNum;
 	local Remainder;
 	local Binary = "";
@@ -67,5 +73,3 @@ function Type.DecToBin(DecNum)		--Convert a decimal number to Binary
 	
 	return Binary;
 end
-
-print(Type.DecToBin(34))
