@@ -5,22 +5,22 @@ Bignum: a class for arbitrarily large numbers
 
 NEW:-
 	Comparison
-	Exponentiation	
+	Exponentiation
 	Signed Integers (0.2)
- 
+
 CHANGES:-
  Faster:
-	41x		Big Number Multiplication
+	41x	Big Number Multiplication
 	4x		Lua Number Multiplication
 	2x		Palindrome Detection
 	4x		Addition
-	
+
  Slower:
-	16x		Digit Sum
-	38x		No. of Digits
-	
+	16x	Digit Sum
+	38x	No. of Digits
+
 TODO:-
-	Fully Support Signed Integers	
+	Fully Support Signed Integers
 	Subtraction
 	Long Division (remainder, decimal)
 	GCD
@@ -62,7 +62,7 @@ function bigNum.new(x, sign)
 			end
 		end
 	end
-	
+
 	--Connect bNum to its meta-methods
 	setmetatable(obNum, bigNum.mt)
 
@@ -108,14 +108,14 @@ end
 --Helper Function
 local function addHelp(n, ns, m, ms) -- n > m
 	local ans, carry, sgn = {}, 0, 0
-	
+
 	if ms * ns < 0 then sgn = -1 elseif ms * ns > 0 then sgn = 1 end
 
 	for i = 1, #n do
 		ans[i] = (n[i] + (sgn*(m[i] or 0)) + carry) % radix
 		carry = math.floor((n[i] + (sgn*(m[i] or 0)) + carry) / radix)
 	end; if carry ~= 0 then ans[#ans + 1] = carry end
-	
+
 	return ans
 end
 
@@ -124,7 +124,7 @@ end
 -- @return A big number that is the sum.
 function bigNum:add(num)
 	local num = (getmetatable(num) == bigNum.mt and num or bigNum.new(num))
-	if self > num then	
+	if self > num then
 		return bigNum.new(addHelp(self.val, self.sign, num.val, num.sign))
 	else
 		return bigNum.new(addHelp(num.val, num.sign, self.val, self.sign))
@@ -145,7 +145,7 @@ end
 
 --######################
 --    Multiplication
---###################### 
+--######################
 
 --Helper Function: bigNum * lNum
 function mulHelp1(b, lNum)
@@ -167,21 +167,21 @@ end
 function bigNum:mul(num)
 	if getmetatable(num) == bigNum.mt then --bigNum * bigNum
 		local m, n, c, ans, carry = self.val, num.val, {}, {}, 0
-		
+
 		if #m > #n then m, n = n, m end -- m = min(m, n)
 
 		for i = 1, #m do --Schoolbook Multiplication
 			for j = 1, #n do
 				c[i+j] = (c[i+j] or 0) + math.floor((m[i] * n[j])/radix)
-				c[i+j-1] = (c[i+j-1] or 0) + (m[i] * n[j]) % radix		
+				c[i+j-1] = (c[i+j-1] or 0) + (m[i] * n[j]) % radix
 			end
 		end; if c[#c] == 0 then c[#c] = nil end
-		
+
 		for i = 1, #c do --Add
 			ans[i] = (c[i] + carry) % radix
-			carry = math.floor((c[i] + carry)/radix)			
+			carry = math.floor((c[i] + carry)/radix)
 		end; if carry ~= 0 then ans[#ans + 1] = carry end
-		
+
 		--Sign of the Answer
 		local sgn = 0; if self.sign * num.sign < 0 then sgn = -1
 		elseif self.sign * num.sign > 0 then sgn = 1 end
@@ -207,7 +207,7 @@ end
 
 --######################
 --		 Division
---###################### 
+--######################
 
 --Helper Function: bigNum / luaNum
 local function divHelp1(m, lNum)

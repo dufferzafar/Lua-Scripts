@@ -1,7 +1,7 @@
 --[[
 The libLua Project - A collection of pure lua functions.
 
-libLua.Set 
+libLua.Set
 	Set theory related functions.
 
 	(i)		Union*
@@ -27,12 +27,12 @@ function libLua.Set.new(tab)
 	if tab then
 		for _, v in ipairs(tab) do
 			obSet[v] = true
-		end		
+		end
 	end
-	
+
 	--Connect set to its meta-methods
 	setmetatable(obSet, libLua.Set.mt)
-	
+
 	return obSet
 end
 
@@ -51,7 +51,7 @@ end
 
 function libLua.Set.sub(s1,s2)
 	local res = libLua.Set.new()
-	for k in pairs(s1) do 
+	for k in pairs(s1) do
 		if not s2[k] then
 			res[k] = s1[k]
 		end
@@ -93,8 +93,8 @@ local s = libLua.Set
 --###################################################
 x = s.new({1,2,3,9,81,810})
 y = s.new({1,2,3,23})
--- print(x, y); 
+-- print(x, y);
 print(x+y);
--- print(x*y); 
+-- print(x*y);
 -- print(x-y)
 -- print(y-x)
