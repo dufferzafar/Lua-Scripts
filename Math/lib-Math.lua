@@ -4,44 +4,44 @@ Script Features:	Math Functions
 Script Author:		Psych0 C0d3r
 Script Version:		0.3a
 
-NOTE:- 
+NOTE:-
 	1.) Add arg check to EACH & EVERY function
 	2.) Understand Round & Floor functions
 	3.) Create an error table tblError[]
-	
+
 
 Function List:-
 	Helpers:
-		(i)		CheckArgNum
+		(i)	CheckArgNum
 		(ii)	CheckArg
-		
+
 	Basic:
-		(i) 	IsInteger
-		(ii) 	IsNegative
+		(i) 		IsInteger
+		(ii) 		IsNegative
 		(iii) 	IsEven
-		(iv) 	HCF
-		(v) 	LCM
-		(vi) 	IsPrime*
+		(iv) 		HCF
+		(v) 		LCM
+		(vi) 		IsPrime*
 		(vii) 	AreCoPrimes
-		(viii) 	IsFactor
-		(ix)	Pythagoras
+		(viii)	 IsFactor
+		(ix)		Pythagoras
 		(x)		Factorial
-		(xi)	Permuations
-		(xii)	Combinations
-	
+		(xi)		Permuations
+		(xii)		Combinations
+
 	Advanced:
 		(i)		Solve*
-	
+
 	Modified:
 		(i)		Divide
-		(ii)	Floor
-		(iii)	Round
-		(iv)	RadToDeg
+		(ii)		Floor
+		(iii)		Round
+		(iv)		RadToDeg
 		(v)		DegToRad
-		
+
 	Bit:
 		(i)		LeftShift
-		(ii)	RightShift
+		(ii)		RightShift
 
 --]]
 
@@ -63,16 +63,16 @@ local function CheckArgNum(tArgs, nArgs)
 end
 
 local function CheckArg(tArgs, nPos, sType)
-	if type(tArgs[nPos]) == sType then 
+	if type(tArgs[nPos]) == sType then
 		return tArgs[nPos]
 	elseif sType == "number" then
-		if tonumber(tArgs[nPos]) then 
+		if tonumber(tArgs[nPos]) then
 			return tonumber(tArgs[nPos])
 		else
 			error("Bad argument #"..nPos..", must be a number, you passed a "..type(tArgs[nPos]).." which couldn't be converted to number.",3)
-		end		
-	else 
-		error("Bad argument #"..nPos..", must be a "..sType..", you passed a "..type(tArgs[nPos])..".",3) 
+		end
+	else
+		error("Bad argument #"..nPos..", must be a "..sType..", you passed a "..type(tArgs[nPos])..".",3)
 	end
 end
 --######################################################
@@ -83,7 +83,7 @@ function MathEx.IsInteger(...)
 	CheckArgNum(arg, 1)
 	local x = CheckArg(arg, 1, "number")
 	--<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
-	
+
 	return math.abs(x) == math.floor(x)
 end
 
@@ -91,7 +91,7 @@ function MathEx.IsNegative(...)
 	CheckArgNum(arg, 1)
 	local x = CheckArg(arg, 1, "number")
 	--<<<<<<<<<<<<<<<<<<<<<<<<<<<
-	
+
 	return x < 0
 end
 
@@ -99,7 +99,7 @@ function MathEx.IsEven(...)
 	CheckArgNum(arg, 1)
 	local x = CheckArg(arg, 1, "number")
 	--<<<<<<<<<<<<<<<<<<<<<<<<<<<
-	
+
 	return x % 2 == 0
 end
 
@@ -107,9 +107,9 @@ function MathEx.Pythagoras(...)
 	CheckArgNum(arg, 2)
 	local x = CheckArg(arg, 1, "number")
 	local y = CheckArg(arg, 2, "number")
-	--<<<<<<<<<<<<<<<<<<<<<<<<<<<	
-	
-	return math.sqrt(x^2 + y^2)	
+	--<<<<<<<<<<<<<<<<<<<<<<<<<<<
+
+	return math.sqrt(x^2 + y^2)
 end
 
 
@@ -117,15 +117,15 @@ end
 --					Modified Functions
 --######################################################
 
-function MathEx.Divide(...) 
+function MathEx.Divide(...)
 	CheckArgNum(arg, 2)
 	local x = CheckArg(arg, 1, "number")
 	local y = CheckArg(arg, 2, "number")
 	--<<<<<<<<<<<<<<<<<<<<<<<<<<<
-	
-	if x == 0 then 	
+
+	if x == 0 then
 		return 0, 0
-	elseif y == 0 then 	
+	elseif y == 0 then
 		return nil, nil
 	else
 		return math.floor(x / y) , x % y
@@ -137,7 +137,7 @@ function MathEx.Floor(...)
 	local x = CheckArg(arg, 1, "number")
 	local y = CheckArg(arg, 2, "number")
 	--<<<<<<<<<<<<<<<<<<<<<<<<<<<
-	
+
 	if y and y ~= 0 then
 		local e = 10 ^ y
 		return math.floor(x * e) / e
@@ -151,7 +151,7 @@ function MathEx.Round(...)
 	local x = CheckArg(arg, 1, "number")
 	local y = CheckArg(arg, 2, "number")
 	--<<<<<<<<<<<<<<<<<<<<<<<<<<<
-	
+
 	local e = 10 ^ (y or 0)
 	return math.floor(x * e + 0.5) / e
 end
@@ -160,7 +160,7 @@ function MathEx.DegToRad(...)
 	CheckArgNum(arg, 1)
 	local x = CheckArg(arg, 1, "number")
 	--<<<<<<<<<<<<<<<<<<<<<<<<<<<
-	
+
 	return MathEx.Round(x * 0.01745329252, 5)
 end
 
@@ -168,7 +168,7 @@ function MathEx.RadToDeg(...)
 	CheckArgNum(arg, 1)
 	local x = CheckArg(arg, 1, "number")
 	--<<<<<<<<<<<<<<<<<<<<<<<<<<<
-	
+
 	return MathEx.Round(x * 57.29578, 5)
 end
 
@@ -181,7 +181,7 @@ function MathEx.BitShiftLeft(...)
 	local x = CheckArg(arg, 1, "number")
 	local y = CheckArg(arg, 2, "number")
 	--<<<<<<<<<<<<<<<<<<<<<<<<<<<
-	
+
 	return math.floor(x * (2 ^ y))
 end
 
@@ -190,7 +190,7 @@ function MathEx.BitShiftRight(...)
 	local x = CheckArg(arg, 1, "number")
 	local y = CheckArg(arg, 2, "number")
 	--<<<<<<<<<<<<<<<<<<<<<<<<<<<
-	
+
 	return math.floor(x / (2 ^ y))
 end
 
@@ -204,7 +204,7 @@ function MathEx.Factorial(...)
 	local x = CheckArg(arg, 1, "number")
 	--<<<<<<<<<<<<<<<<<<<<<<<<<<<
 	fact = 1;
-	
+
 	if not MathEx.IsInteger(x) then
 		return nil;
 	end
@@ -212,40 +212,40 @@ function MathEx.Factorial(...)
 	if x == 0 or x == 1 then
 		return 1;
 	end
-	
+
 	while x > 1 do
 		fact = fact * x
 		x = x - 1;
-	end	
-	
+	end
+
 	return fact;
 end
 
 function MathEx.Permutations(...)
-	CheckArgNum(arg, 2)	
+	CheckArgNum(arg, 2)
 	local x = CheckArg(arg, 1, "number")
 	local y = CheckArg(arg, 2, "number")
 	--<<<<<<<<<<<<<<<<<<<<<<<<<<<
-	
+
 	if not MathEx.IsInteger(x) or not MathEx.IsInteger(y) then
 		return nil 	--non int
 	end
 
-	if x < 0 or y < 0 then 
+	if x < 0 or y < 0 then
 		return nil	--non negative
 	end
-	
+
 	return MathEx.Factorial(x) / MathEx.Factorial(x - y)
-	
+
 end
 
 function MathEx.Combinations(...)
-	CheckArgNum(arg, 2)	
+	CheckArgNum(arg, 2)
 	local x = CheckArg(arg, 1, "number")
 	local y = CheckArg(arg, 2, "number")
 	--<<<<<<<<<<<<<<<<<<<<<<<<<<<
-	
-	return MathEx.Permutations(x,y) / MathEx.Factorial(y)	
+
+	return MathEx.Permutations(x,y) / MathEx.Factorial(y)
 end
 
 
@@ -258,25 +258,25 @@ function MathEx.HCF(...)
 	local x = CheckArg(arg, 1, "number")
 	local y = CheckArg(arg, 2, "number")
 	--<<<<<<<<<<<<<<<<<<<<<<<<<<<
-	
-	if x == y then return x 
+
+	if x == y then return x
 	elseif x == 0 or y == 0 then return 0 end
 
 	local Dividend = math.max(x, y);
 	local Divisor = math.min(x, y);
-	
+
 	while true do	--This is not an endless loop
 		_, Remainder = MathEx.Divide(Dividend, Divisor)
-		
+
 		--Remainder will surely be zero
 		if Remainder == 0 then
 			return Divisor
 		else
 			Dividend = Divisor
 			Divisor = Remainder
-		end		
+		end
 	end
-	
+
 	--It would never reach here
 	return 1	--in CASE it does :)
 end
@@ -287,9 +287,9 @@ function MathEx.LCM(...)
 	local y = CheckArg(arg, 2, "number")
 	--<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
-	if x == y then return x 
+	if x == y then return x
 	elseif x == 0 or y == 0 then return 0 end
-	
+
 	return x * y / MathEx.HCF(x, y)
 end
 
@@ -298,7 +298,7 @@ function MathEx.AreCoPrimes(...)
 	local x = CheckArg(arg, 1, "number")
 	local y = CheckArg(arg, 2, "number")
 	--<<<<<<<<<<<<<<<<<<<<<<<<<<<
-	
+
 	return MathEx.HCF(x, y) == 1
 end
 
@@ -307,18 +307,18 @@ function MathEx.IsFactor(...)
 	local x = CheckArg(arg, 1, "number")
 	local y = CheckArg(arg, 2, "number")
 	--<<<<<<<<<<<<<<<<<<<<<<<<<<<
-	
+
 	return MathEx.IsInteger(x / y)
 end
 
 function MathEx.SumDigit(x)
 	local a , n , s = 0, 0, tostring(x)
 
-	for i = 1, #s do 
+	for i = 1, #s do
 		n = tonumber(string.sub(s, i, i))
 		a = a + n;
 	end
-	
+
 	return a
 end
 
@@ -329,7 +329,7 @@ function MathEx.DigitSum(x)
 end
 
 function MathEx.IsPrime(x)
-	if (x < 2) then return false 
+	if (x < 2) then return false
 	elseif (x==2) or (x==3) then return true
 	elseif (x%2 == 0) then return false, 2
 	elseif (x%3 == 0) then return false, 3
@@ -364,4 +364,7 @@ end
 --######################################################
 
 -- sT = os.clock()
+
+print(MathEx.Floor(897))
+
 -- eT = os.clock(); print((eT - sT)*1000 .. " msec")

@@ -1,7 +1,7 @@
 --[[
 The libLua Project - A collection of pure lua functions.
 
-libLua.Type 
+libLua.Type
 	Basic type wrappers and base conversion fucntions.
 
 --]]
@@ -56,20 +56,20 @@ end
 --######################################################
 
 function libLua.Type.DecToBin(DecNum)		--Convert a decimal number to Binary
-	local Quot = DecNum;
-	local Remainder;
-	local Binary = "";
-	
+	local Quot = DecNum
+	local Remainder
+	local Binary = ""
+
 	while (Quot ~= 1) do
-		Remainder = Quot % 2;
-		Quot = math.floor(Quot / 2);
-		Binary = Remainder..Binary;
+		Remainder = Quot % 2
+		Quot = math.floor(Quot / 2)
+		Binary = Remainder..Binary
 	end
-	
-	Binary = "1"..Binary;
-	
-	--if string.len(Binary) >= 8 then return Binary end;
-	--while (string.len(Binary) ~= 8) do Binary = "0"..Binary	end;
-	
-	return Binary;
+
+	Binary = "1"..Binary
+
+	--if string.len(Binary) >= 8 then return Binary end
+	--while (string.len(Binary) ~= 8) do Binary = "0"..Binary	end
+
+	return Binary
 end

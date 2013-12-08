@@ -1,13 +1,13 @@
 --[[
 The libLua Project - A collection of pure lua functions.
 
-libLua.Type 
+libLua.Type
 	Basic type wrappers and base conversion fucntions.
 
 --]]
 
-libLua = {}
-libLua.Calendar = {};
+libLua = libLua or {}
+libLua.Calendar = {}
 
 local floor = math.floor
 local mod = math.mod
@@ -17,7 +17,7 @@ local mod = math.mod
 --######################################################
 
 --[[
-		Borrowed from DateLUA Library
+		Borrowed from DateLUA Module
 ]]--
 
 -- day since year 0
@@ -36,9 +36,9 @@ local function breakdaynum(g)
 	local g = g + 306
 	local y = floor((10000*g + 14780)/3652425)
 	local d = g - dayfromyear(y)
-	if d < 0 then 
+	if d < 0 then
 		y = y - 1
-		d = g - dayfromyear(y) 
+		d = g - dayfromyear(y)
 	end
 	local mi = floor((100*d + 52)/3060)
 	return (d - floor((mi*306 + 5)/10)), mod(mi + 2,12), (floor((mi + 2)/12) + y - 1)
@@ -67,17 +67,17 @@ function libLua.Calendar.SubtractDate(Date1, Date2, Del, Type)
 	local d1, m1, y1 = libLua.Calendar.UnFormatDate(Date1, Del)
 	local d2, m2, y2 = libLua.Calendar.UnFormatDate(Date2, Del)
 	local days = makedaynum(d1, m1, y1) - makedaynum(d2, m2, y2)
-	
+
 	if Type == "D" then
 		return days
 	elseif Type == "YMD" then
 		local d, m, y = breakdaynum( days )
-		
+
 		if d ~= 0 and m == 0 and y == 0 then
 			if d == 1 then return d.." Day" else return d.." Days" end
 		elseif y == 0 and m <= 12 then
 			return m.." Month(s) "..d.." Day(s)"
-		else 
+		else
 			return y.." Year(s) "..m.." Month(s) "..d.." Day(s)"
 		end
 	end

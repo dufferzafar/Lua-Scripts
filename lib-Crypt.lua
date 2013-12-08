@@ -1,18 +1,18 @@
 --[[
 The libLua Project - A collection of pure lua functions.
 
-libLua.Crypt 
+libLua.Crypt
 	Cryptoography related functions.
 
 --]]
 
-libLua = {}
-libLua.Crypt = {};
+libLua = libLua or {}
+libLua.Crypt = {}
 
 --######################################################
 --					Frequency Analysis
 --######################################################
-	
+
 function libLua.Crypt.Frequency(str)
 	local charFreq, str = {}, string.lower(str)
 	for i = 1, 26 do

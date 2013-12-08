@@ -10,7 +10,7 @@ Functions:
 
 --]]
 
-libLua = {}
+libLua = libLua or {}
 libLua.Table = {}
 
 --- Copies a table into another.

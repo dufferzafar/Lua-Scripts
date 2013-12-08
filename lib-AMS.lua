@@ -1,16 +1,12 @@
 --[[
 The libLua Project - A collection of pure lua functions.
 
-libLua.AMS 
+libLua.AMS
 	Extensions of common Autoplay Media Studio functions.
-
-Contains =>
-
-System - Wrappers/Extensions for built-in system functions.
 
 --]]
 
-libLua = {}
+libLua = libLua or {}
 libLua.AMS = {}
 
 --######################################################

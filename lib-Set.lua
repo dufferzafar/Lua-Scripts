@@ -4,19 +4,18 @@ The libLua Project - A collection of pure lua functions.
 libLua.Set
 	Set theory related functions.
 
-	(i)		Union*
+	(i)	Union*
 	(ii)	Intersection
 	(iii)	NoOfSubsets
 	(iv)	IsSubset*
-	(v)		RemoveDuplicates*
+	(v)	RemoveDuplicates*
 	(vi)	Sort
 	(vi)	AreEqual*
 	(vii)	ToString*
 
 --]]
 
-libLua = {}
-
+libLua = libLua or {}
 libLua.Set = {};
 
 --- Creates a new set from a standard lua table.
@@ -55,9 +54,11 @@ function libLua.Set.sub(s1,s2)
 		if not s2[k] then
 			res[k] = s1[k]
 		end
-	end; return res
+	end
+	return res
 end
 
+-- Todo: Why the repeat/until ?
 local function bubbleSort(t)
 	local change, iCount = false, #t
 	repeat
@@ -68,33 +69,25 @@ local function bubbleSort(t)
 				change = true
 			end
 		end
-	until change == false
+	until (change == false)
 end
 
 function libLua.Set.tostring(s1)
 	local res = {}
 	for k in pairs(s1) do
 		res[#res + 1] = k
-	end; bubbleSort(res);
+	end
+
+	bubbleSort(res)
+
 	return "{"..table.concat(res, ",").."}"
 end
 
 --The Set Meta-Table
-libLua.Set.mt = {	__index = libLua.Set,
-			__add = libLua.Set.union,
-			__mul = libLua.Set.intersec,
-			__sub = libLua.Set.sub,
-			__tostring = libLua.Set.tostring
+libLua.Set.mt = {
+	__index = libLua.Set,
+	__add = libLua.Set.union,
+	__mul = libLua.Set.intersec,
+	__sub = libLua.Set.sub,
+	__tostring = libLua.Set.tostring
 };
-
-local s = libLua.Set
---###################################################
---				    TESTING TESTING
---###################################################
-x = s.new({1,2,3,9,81,810})
-y = s.new({1,2,3,23})
--- print(x, y);
-print(x+y);
--- print(x*y);
--- print(x-y)
--- print(y-x)

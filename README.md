@@ -22,6 +22,7 @@ Just require() the file into your code and get started.
   * AES, MD5
 
 * lib.Math
+  * Clean the entire shit up!
   * More primality testing: Lucas-Lehmer, Fermat's
   * Complex number support
 
@@ -31,5 +32,9 @@ Just require() the file into your code and get started.
   * Multiplication using Karatsuba or Toom3
 
 ## <a name="changelog"></a>Changelog
+
+8/12/2013:
+
+* Started taking seriously again!
 
 * Added some testing for Base64
