@@ -38,3 +38,7 @@ Just require() the file into your code and get started.
 * Started taking seriously again!
 
 * Added some testing for Base64
+
+
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/dufferzafar/liblua/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+
