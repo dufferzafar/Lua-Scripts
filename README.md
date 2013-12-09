@@ -17,18 +17,41 @@ Just require() the file into your code and get started.
 * Add basic documentation
 * Entire reference for BigNum v2
 
-* lib.Crypt
+* Crypt
   * Basic Ciphers
   * AES, MD5
 
-* lib.Math
+* Calendar
+  * DateLua Module
+
+* Sort
+  * Bubble
+  * Selection
+  * Heap
+  * Quick
+  * Merge
+  * A basic test module to compare the above
+
+* String
+  * IsSimilar() 
+  * similar_text module in PHP
+  * Levenshtein Distance
+  * Permutations of a string
+
+* Math
   * Clean the entire shit up!
-  * More primality testing: Lucas-Lehmer, Fermat's
+  * Generate Primes: Sieves
+  * Vector support
   * Complex number support
+  * LCM and HCF of fractions
+  * More primality testing: Lucas-Lehmer, Fermat's, Miller-Rabin
 
 * BigNum v2
   * Division
+  * Square and nth roots
+  * Primality tests on bignum
   * Faster Exponentitation
+  * Full support for signed integers
   * Multiplication using Karatsuba or Toom3
 
 ## <a name="changelog"></a>Changelog
