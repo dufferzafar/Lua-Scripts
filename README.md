@@ -15,16 +15,21 @@ Just require() the file into your code and get started.
 ## <a name="todo"></a>To Do
 
 * Cleanup
-  * Remove decoration 
-  * Create a module
+    * Remove decoration 
+    * Create a module
+
+* Tests
+    * For Each Module
+    * Use some unit testing module?
 
 * Add documentation
     * Github Wiki
     * Entire reference for BigNum v2
 
 * Crypt
-    * Basic Ciphers
-    * AES, MD5
+    * Frequency Analysis: Uni/Bi/Tri grams
+    * Basic Ciphers: Ceaser, ROT13, XOR
+    * Full Blown Crypto: AES, MD5, SHA1
 
 * Calendar
     * DateLua Module

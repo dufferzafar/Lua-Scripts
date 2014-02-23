@@ -107,7 +107,7 @@ function Weddle(Y, h)
          ans = ans + 5 * Y[i]
       elseif ((i-1)%6 == 2) or ((i-1)%6 == 4) then -- 6n+2/6n+4
          ans = ans + Y[i]
-      else -- 4n+3
+      else -- 6n+3
          ans = ans + 6 * Y[i]
       end
    end
