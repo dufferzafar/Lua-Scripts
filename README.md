@@ -1,6 +1,6 @@
 # libLua
 
-Common functions implemented in Lua.
+Common functions and algorithms implemented in pure Lua (<3)
 
 ## Table of Contents
 
@@ -14,54 +14,58 @@ Just require() the file into your code and get started.
 
 ## <a name="todo"></a>To Do
 
-* Add basic documentation
-* Entire reference for BigNum v2
+* Cleanup
+  * Remove decoration 
+  * Create a module
+
+* Add documentation
+    * Github Wiki
+    * Entire reference for BigNum v2
 
 * Crypt
-  * Basic Ciphers
-  * AES, MD5
+    * Basic Ciphers
+    * AES, MD5
 
 * Calendar
-  * DateLua Module
+    * DateLua Module
 
 * Sort
-  * Bubble
-  * Selection
-  * Heap
-  * Quick
-  * Merge
-  * A basic test module to compare the above
+    * Bubble
+    * Selection
+    * Heap
+    * Quick
+    * Merge
+    * A module to run tests and compare the efficiency of these
 
 * String
-  * IsSimilar() 
-  * similar_text module in PHP
-  * Levenshtein Distance
-  * Permutations of a string
+    * IsSimilar() 
+    * similar_text module in PHP
+    * Levenshtein Distance
+    * Permutations of a string
 
 * Math
-  * Clean the entire shit up!
-  * Generate Primes: Sieves
-  * Vector support
-  * Complex number support
-  * LCM and HCF of fractions
-  * More primality testing: Lucas-Lehmer, Fermat's, Miller-Rabin
+    * Clean the entire shit up!
+    * Generate Primes: Sieves
+    * Factor Numbers: Monte Carlo Factorisation
+    * Vector support
+    * Complex number support
+    * LCM and HCF of fractions
+    * More primality testing: Lucas-Lehmer, Fermat's, Miller-Rabin
 
 * BigNum v2
-  * Division
-  * Square and nth roots
-  * Primality tests on bignum
-  * Faster Exponentitation
-  * Full support for signed integers
-  * Multiplication using Karatsuba or Toom3
+    * Division
+    * Square and nth roots
+    * Primality tests on bignum
+    * Faster Exponentitation
+    * Full support for signed integers
+    * Multiplication using Karatsuba or Toom3
 
 ## <a name="changelog"></a>Changelog
 
+23/2/2014:
+
+* Added: Numerical integration routines
+
 8/12/2013:
 
-* Started taking seriously again!
-
-* Added some testing for Base64
-
-
-[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/dufferzafar/liblua/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
-
+* Added: some testing for Base64

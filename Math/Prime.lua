@@ -1,12 +1,14 @@
 --[[
 The libLua Project - A collection of pure lua functions.
 
-libLua.Primes 
+libLua.Primes
 	Prime Number related functions.
 
 Functions:
 	1. IsPrime
 		i. Trial Division
+		ii. Fermat's Method
+		iii. Rabin Miller
 
 --]]
 
@@ -17,7 +19,7 @@ libLua.Primes = {}
 --	 Helper Functions
 --######################
 local function modExp(b, e, n)
-	local temp = 1	
+	local temp = 1
 	while e ~= 0 do
 		if e%2 == 0 then
 			b, e = (b*b) % n, e/2
@@ -43,13 +45,13 @@ end
 -- @return boolean Whether 'x' is prime
 -- @return Smallest prime factor of 'x', if it is composite
 function libLua.Primes.IsPrime(x, method, times)
-	if (x < 2) then return false 
+	if (x < 2) then return false
 	elseif (x==2) or (x==3) then return true
 	elseif (x%2 == 0) then return false, 2
 	elseif (x%3 == 0) then return false, 3
 	else
 		method = method or "Trial-Division"
-		
+
 		-- Naive Approach
 		if method == "Trial-Division" then
 			local f, limit = 5, math.floor(x^0.5)
@@ -58,22 +60,22 @@ function libLua.Primes.IsPrime(x, method, times)
 				if (x%(f+2)) == 0 then return false, f+2 end
 				f = f + 6;
 			end; return true
-			
+
 		-- Rabin-Miller's Primality Test
 		elseif method == "Rabin-Miller" then
-			
-			--Factorise x-1 to the form Q * (2^K)		
+
+			--Factorise x-1 to the form Q * (2^K)
 			local n, k = x-1, 0;
 			while n%2 == 0 do n, k = n/2, k+1 end
 			local q = (x-1)/(2^k)
-			
+
 			--Check Different Bases for Witness
 			for i = 1, times or 10 do
 				if isWitness(math.floor(math.random() * (x - 1)) + 1, q, k, x) then
 					return false
 				end
 			end; return true
-			
+
 		-- Fermat's Method
 		elseif method == "Fermat" then
 			for i = 1, times or 10 do
@@ -97,12 +99,12 @@ for i = 1, 1000 do
 	local s = p.IsPrime(num)
 	local f = p.IsPrime(num,"Fermat")
 	local rm = p.IsPrime(num,"Rabin-Miller")
-	
+
 	if f ~= s then
 		-- print("Fermat:",num,f,s)
 		countf = countf + 1
 	end
-	if rm ~= s then	
+	if rm ~= s then
 		-- print("Rabin:",num,rm,s)
 		-- print()
 		countrm = countrm + 1
