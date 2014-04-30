@@ -15,9 +15,9 @@ Functions:
 libLua = {}
 libLua.Primes = {}
 
---######################
 --	 Helper Functions
---######################
+
+-- Calculates (B ^ E) % N
 local function modExp(b, e, n)
 	local temp = 1
 	while e ~= 0 do
@@ -89,9 +89,7 @@ end
 math.randomseed(os.time())
 
 local p = libLua.Primes
---###################################################
---				    TESTING TESTING
---###################################################
+
 local countf, countrm = 0, 0
 
 for i = 1, 1000 do

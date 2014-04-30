@@ -271,9 +271,3 @@ bigNum.mt={ __index = bigNum,
 			__eq = bigNum.equal,
 			__tostring = bigNum.tostring
 }
-
-local bg = bigNum
---###################################################
---				    TESTING TESTING
---###################################################
--- x = bg.new("7")

@@ -45,13 +45,14 @@ Just require() the file into your code and get started.
 * String
     * IsSimilar() 
     * similar_text module in PHP
+    * Fuzzy Matching ?
     * Levenshtein Distance
     * Permutations of a string
 
 * Math
     * Clean the entire shit up!
     * Generate Primes: Sieves
-    * Factor Numbers: Monte Carlo Factorisation
+    * Factor Numbers: Monte Carlo Factorization
     * Vector support
     * Complex number support
     * LCM and HCF of fractions
