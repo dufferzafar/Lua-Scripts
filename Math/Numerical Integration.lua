@@ -1,24 +1,4 @@
--- Trigonometric Functions
-sin, asin, sinh = math.sin, math.asin, math.sinh
-cos, acos, cosh = math.cos, math.acos, math.cosh
-tan, atan, atan2 = math.tan, math.atan, math.atan2
-
--- Exponentiation and Logarithms
-exp, ln, log = math.exp, math.log, math.log10
-
--- Powers
-pow, sqrt = math.pow, math.sqrt
-
--- Rounding
-floor, ceil = math.floor, math.ceil
-
--- Radians, Degree
-rad, deg = math.rad, math.deg
-
--- Random
-rand, srand = math.random, math.randomseed
-
---------------------------------------------------
+require("LoadFunc")
 
 --[[
    Generates a table for a function of x
@@ -26,9 +6,7 @@ rand, srand = math.random, math.randomseed
 function Generate_Table(Func, Start, End, Step)
    local t = {}
    for i = Start, End, Step do
-      x = i
-      assert(loadstring("y="..Func)) ()
-      table.insert(t, y)
+      table.insert(t, func_eval(Func, i))
    end
    return t
 end
