@@ -7,7 +7,7 @@ function ROT13(t)
       function (char)
         local offset = (char < 'a') and byte_A or byte_a
         local b = string.byte(char) - offset -- 0 to 25
-        b = math.fmod(b  + 13, 26) + offset -- Rotate
+        b = math.fmod(b + 13, 26) + offset -- Rotate
         return string.char(b)
       end
     ))
